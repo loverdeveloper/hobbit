@@ -1,41 +1,12 @@
-package pdco_go
+package main
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/gin-gonic/gin"
+	"pdco/router"
 )
 
-type Akbar struct {
-	Name   string `json:"name"`
-	Family string `json:"family"`
-	Grade  string `json:"grade"`
-}
-
-func (a *Akbar) getAkbar() ([]byte, error) {
-	return json.Marshal(a)
-}
-
-func (a *Akbar) setName(name string)  {
-	a.Name = name
-}
-
-func (a *Akbar) setFamily(family string)  {
-	a.Family = family
-}
-
-func (a *Akbar) setGrade(grade string)  {
-	a.Grade = grade
-}
-
-func akbarFactory()  {
-	var akbar Akbar
-	akbar.setName("Akbar")
-	akbar.setFamily("Ghaeini")
-	akbar.setGrade("Grade Zahra Khodayary")
-	akbarIns, _ := akbar.getAkbar()
-	fmt.Println(string(akbarIns))
-}
-
 func main() {
-	akbarFactory()
+	r := gin.Default()
+	router.Router(r)
+	_ = r.Run(":5000")
 }
