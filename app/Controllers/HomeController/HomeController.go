@@ -8,6 +8,6 @@ import (
 
 func Index(ctx *gin.Context) {
 	check := new(Models.HealthCheckModel)
-	_, _ = check.CheckHealth()
+	check.CheckHealth()
 	ctx.JSON(http.StatusOK, check)
 }
